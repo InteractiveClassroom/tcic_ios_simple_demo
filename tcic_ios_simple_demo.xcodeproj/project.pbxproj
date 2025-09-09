@@ -18,6 +18,11 @@
 		E0D377B72E5EDD7100F9DEA6 /* tcic_ios_simple_demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D377B62E5EDD7100F9DEA6 /* tcic_ios_simple_demoUITests.swift */; };
 		E0D377B92E5EDD7100F9DEA6 /* tcic_ios_simple_demoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D377B82E5EDD7100F9DEA6 /* tcic_ios_simple_demoUITestsLaunchTests.swift */; };
 		E0D377C72E5F071200F9DEA6 /* MyHeaderLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D377C62E5F071200F9DEA6 /* MyHeaderLeftView.swift */; };
+		E0ED1E072E701013007F5A48 /* WizardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E062E701013007F5A48 /* WizardModels.swift */; };
+		E0ED1E092E701040007F5A48 /* TCICCloudAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E082E701040007F5A48 /* TCICCloudAPI.swift */; };
+		E0ED1E0B2E701067007F5A48 /* ClassroomSetupWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0A2E701067007F5A48 /* ClassroomSetupWizardView.swift */; };
+		E0ED1E0D2E70108D007F5A48 /* WizardUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0C2E70108D007F5A48 /* WizardUIComponents.swift */; };
+		E0ED1E0F2E7014C7007F5A48 /* TCICRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0E2E7014C7007F5A48 /* TCICRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 		E0D377B82E5EDD7100F9DEA6 /* tcic_ios_simple_demoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tcic_ios_simple_demoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E0D377C52E5F01A700F9DEA6 /* tcic-ios-simple-demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "tcic-ios-simple-demo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E0D377C62E5F071200F9DEA6 /* MyHeaderLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeaderLeftView.swift; sourceTree = "<group>"; };
+		E0ED1E062E701013007F5A48 /* WizardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardModels.swift; sourceTree = "<group>"; };
+		E0ED1E082E701040007F5A48 /* TCICCloudAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCICCloudAPI.swift; sourceTree = "<group>"; };
+		E0ED1E0A2E701067007F5A48 /* ClassroomSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomSetupWizardView.swift; sourceTree = "<group>"; };
+		E0ED1E0C2E70108D007F5A48 /* WizardUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUIComponents.swift; sourceTree = "<group>"; };
+		E0ED1E0E2E7014C7007F5A48 /* TCICRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCICRequest.swift; sourceTree = "<group>"; };
 		E9A2CF7F58643224C79EE692 /* Pods_tcic_ios_simple_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tcic_ios_simple_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94DCA48A8C1C30F67724AD2 /* Pods_tcic_ios_simple_demo_tcic_ios_simple_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tcic_ios_simple_demo_tcic_ios_simple_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE672020D1FE849B3A1CD7FB /* Pods-tcic_ios_simple_demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tcic_ios_simple_demoTests.debug.xcconfig"; path = "Target Support Files/Pods-tcic_ios_simple_demoTests/Pods-tcic_ios_simple_demoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +143,11 @@
 				E0D3779F2E5EDD7100F9DEA6 /* Assets.xcassets */,
 				E0D377A12E5EDD7100F9DEA6 /* Preview Content */,
 				E0D377C62E5F071200F9DEA6 /* MyHeaderLeftView.swift */,
+				E0ED1E062E701013007F5A48 /* WizardModels.swift */,
+				E0ED1E082E701040007F5A48 /* TCICCloudAPI.swift */,
+				E0ED1E0A2E701067007F5A48 /* ClassroomSetupWizardView.swift */,
+				E0ED1E0C2E70108D007F5A48 /* WizardUIComponents.swift */,
+				E0ED1E0E2E7014C7007F5A48 /* TCICRequest.swift */,
 			);
 			path = tcic_ios_simple_demo;
 			sourceTree = "<group>";
@@ -446,8 +461,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0ED1E0F2E7014C7007F5A48 /* TCICRequest.swift in Sources */,
 				E0D3779E2E5EDD7000F9DEA6 /* ContentView.swift in Sources */,
 				E0D3779C2E5EDD7000F9DEA6 /* tcic_ios_simple_demoApp.swift in Sources */,
+				E0ED1E0D2E70108D007F5A48 /* WizardUIComponents.swift in Sources */,
+				E0ED1E072E701013007F5A48 /* WizardModels.swift in Sources */,
+				E0ED1E0B2E701067007F5A48 /* ClassroomSetupWizardView.swift in Sources */,
+				E0ED1E092E701040007F5A48 /* TCICCloudAPI.swift in Sources */,
 				E0D377C72E5F071200F9DEA6 /* MyHeaderLeftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

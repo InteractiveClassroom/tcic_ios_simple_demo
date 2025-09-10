@@ -50,6 +50,7 @@ struct UserRegistrationResponse {
 
 struct RoomCreationResponse {
     let roomId: String
+    let roomName: String
 }
 
 // 角色枚举

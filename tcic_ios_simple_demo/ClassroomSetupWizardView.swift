@@ -8,6 +8,7 @@ struct ClassroomSetupWizardView: View {
     @State private var currentStepIndex = 0
     @State private var isProcessing = false
     @State private var classroomInfo: ClassroomInfo?
+    @State private var classrooms: [RoomCreationResponse] = [] // 新增状态变量
     
     // 表单字段
     @State private var secretKey = ""
@@ -170,11 +171,33 @@ struct ClassroomSetupWizardView: View {
         VStack(alignment: .leading, spacing: 20) {
             stepTitle("步骤 3: 进入课堂")
             
-            Text("课堂已创建成功，现在可以进入课堂。")
+            Text("课堂已创建成功，请选择要进入的课堂：")
                 .font(.body)
             
-            if let info = classroomInfo {
-                ClassroomInfoView(classroomInfo: info)
+            if !classrooms.isEmpty {
+                List(classrooms, id: \.roomId) { classroom in
+                    Button(action: {
+                        classroomInfo = classroomInfo?.copyWith(roomId: classroom.roomId)
+                    }) {
+                        HStack {
+                            Image(systemName: "book.closed.fill")
+                                .foregroundColor(.blue)
+                            VStack(alignment: .leading) {
+                                Text(classroom.roomName)
+                                    .font(.headline)
+                                Text("课堂ID: \(classroom.roomId)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            if classroomInfo?.roomId == classroom.roomId {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.green)
+                            }
+                        }
+                    }
+                }
+                .frame(height: 300)
             }
             
             HStack(spacing: 16) {
@@ -184,8 +207,8 @@ struct ClassroomSetupWizardView: View {
                 )
                 
                 SecondaryButton(
-                    title: "重置",
-                    action: { showingResetAlert = true }
+                    title: "刷新列表",
+                    action: { fetchClassroomsFromAPI() }
                 )
             }
         }
@@ -276,10 +299,33 @@ struct ClassroomSetupWizardView: View {
         showSuccess("用户注册成功!")
     }
     
+    private func fetchClassroomsFromAPI() {
+         Task {
+            do {
+                let response = try await TCICCloudAPI.shared.getClassRooms()
+                
+                DispatchQueue.main.async {
+                    self.classrooms = response
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.isProcessing = false
+                    self.showError("获取课堂列表失败\(error.localizedDescription)")
+                }
+            }
+        }
+       
+    }
+    
     private func handleClassroomCreationSuccess(response: RoomCreationResponse) {
         stepStatus.isClassroomCreated = true
         currentStepIndex = 2
-        classroomInfo = classroomInfo?.copyWith(roomId: response.roomId)
+        let newClassroom = classroomInfo?.copyWith(roomId: response.roomId)
+        classroomInfo = newClassroom
+        
+        // 改为调用API获取最新课堂列表
+        fetchClassroomsFromAPI()
+        
         showSuccess("课堂创建成功！")
     }
     

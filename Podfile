@@ -6,7 +6,7 @@ target 'tcic_ios_simple_demo' do
   use_frameworks! :linkage => :static
 
   # Pods for tcic_ios_simple_demo
-  pod 'tcic_ios', :podspec => 'https://ios.qcloudclass.com/1.0.8/tcic_ios.podspec?time=112701'
+  pod 'tcic_ios', :podspec => 'https://ios.qcloudclass.com/1.0.9/tcic_ios.podspec?time=112701'
 
   target 'tcic_ios_simple_demoTests' do
     inherit! :search_paths

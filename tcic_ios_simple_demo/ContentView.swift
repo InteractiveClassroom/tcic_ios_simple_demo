@@ -72,6 +72,8 @@ struct ContentView: View {
         );
         
         let layoutConfig = TCICLayoutConfig(landscapeLayoutConfig: LandscapeLayoutConfig(memberListPosition: TLayoutPosition.top))
+    
+        // let boardConfig = TCICBoardConfig(boardStreamConfig: BoardStreamConfig(boardStreamUrl: ""))
         
         let config = TCICConfig(
             token: params["token"] as! String,
@@ -79,6 +81,7 @@ struct ContentView: View {
             userId: params["userid"] as! String,
             role: 1, basicConfig: basicConfig,
             layoutConfig: layoutConfig
+            // boardConfig: boardConfig
         )
         
         TCICManager.shared.setConfig(config)

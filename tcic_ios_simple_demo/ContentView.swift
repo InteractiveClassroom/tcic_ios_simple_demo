@@ -33,10 +33,12 @@ struct ContentView: View {
                     self.callback.afterExitedClassBlock = {
                         print("dismiss page")
                         isGotoRoomPageActive = false
+                        TCICManager.shared.Tengine.viewController = nil
                     }
                     self.callback.onJoinedClassFailedBlock = {
                         print("joined class failed")
                         isGotoRoomPageActive = false
+                        TCICManager.shared.Tengine.viewController = nil
                     }
                     TCICManager.shared.setCallback(callback)
                 }
@@ -64,12 +66,19 @@ struct ContentView: View {
         headerConfig.headerLeftBuilderWidth = 200
         headerConfig.headerLeftBuilderHeight = 40
         
+        let basicConfig = TCICBasicConfig(
+            autoStartClass: true, allowEarlyEnter: true,
+            allowPipMode: true
+        );
+        
+        let layoutConfig = TCICLayoutConfig(landscapeLayoutConfig: LandscapeLayoutConfig(memberListPosition: TLayoutPosition.top))
+        
         let config = TCICConfig(
             token: params["token"] as! String,
             classId: params["classid"] as! String,
             userId: params["userid"] as! String,
-            role: role == "student" ? 0 : (role == "teacher" ? 1 : (role == "assistant" ? 3 : 4)),
-            headerComponentConfig: headerConfig
+            role: 1, basicConfig: basicConfig,
+            layoutConfig: layoutConfig
         )
         
         TCICManager.shared.setConfig(config)

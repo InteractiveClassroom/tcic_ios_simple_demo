@@ -1,14 +1,14 @@
 PODS:
-  - tcic_ios (1.0.5):
+  - tcic_ios (1.0.8):
     - TXIMSDK_Plus_iOS_XCFramework (= 8.6.7019)
-    - TXLiteAVSDK_Professional (~> 12.6.18866)
+    - TXLiteAVSDK_Professional (~> 12.8.19666)
   - TXIMSDK_Plus_iOS_XCFramework (8.6.7019)
-  - TXLiteAVSDK_Professional (12.6.18894):
-    - TXLiteAVSDK_Professional/Professional (= 12.6.18894)
-  - TXLiteAVSDK_Professional/Professional (12.6.18894)
+  - TXLiteAVSDK_Professional (12.8.19666):
+    - TXLiteAVSDK_Professional/Professional (= 12.8.19666)
+  - TXLiteAVSDK_Professional/Professional (12.8.19666)
 
 DEPENDENCIES:
-  - tcic_ios (from `https://ios.qcloudclass.com/1.0.5/tcic_ios.podspec`)
+  - "tcic_ios (from `https://ios.qcloudclass.com/1.0.8/tcic_ios.podspec?time=112701`)"
 
 SPEC REPOS:
   trunk:
@@ -17,13 +17,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   tcic_ios:
-    :podspec: https://ios.qcloudclass.com/1.0.5/tcic_ios.podspec
+    :podspec: "https://ios.qcloudclass.com/1.0.8/tcic_ios.podspec?time=112701"
 
 SPEC CHECKSUMS:
-  tcic_ios: 652bf9e8e2aaf95a9846ab74c9b19ec57ebe8d4a
+  tcic_ios: f286aae44e7349341fae0cbf3159a65b3276ed06
   TXIMSDK_Plus_iOS_XCFramework: cb54f7de6e30e1368c6831c6eff31c25393bbb98
-  TXLiteAVSDK_Professional: adf74fce095f059a6c400f4e8d062b47eea92261
+  TXLiteAVSDK_Professional: fab8ac9da64efa80bef81377b35530a791411a74
 
-PODFILE CHECKSUM: c4b1369ece0cef2205072b8ae7c7538f3152bb28
+PODFILE CHECKSUM: b8150161a0409e5149307829b07b31a55bbb8b7c
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

@@ -31,30 +31,4 @@ post_install do |installer|
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
   end
-
-  # tcic_ios 1.0.11 的源码在 Xcode 15.2 / Swift 5.9 下会因为 `some UIViewController`
-  # 导致 `UIViewControllerRepresentable` 的关联类型推导失败，从而编译报错。
-  # 这里在每次 `pod install` 后自动打补丁，避免手工改 Pods 内容。
-  tcic_manager = File.join(installer.sandbox.root.to_s, 'tcic_ios', 'TCIC_IOS', 'TCICManager.swift')
-  if File.exist?(tcic_manager)
-    FileUtils.chmod('u+w', tcic_manager) rescue nil
-
-    content = File.read(tcic_manager)
-    patched = content
-
-    patched = patched.gsub(
-      'public func makeUIViewController(context: Context) -> some UIViewController {',
-      "public typealias UIViewControllerType = TCICViewController\\n\\n    public func makeUIViewController(context: Context) -> TCICViewController {"
-    )
-    patched = patched.gsub(
-      'public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}',
-      'public func updateUIViewController(_ uiViewController: TCICViewController, context: Context) {}'
-    )
-    patched = patched.gsub(
-      'public static func dismantleUIViewController(_ uiViewController: UIViewControllerType, coordinator: ()) {',
-      'public static func dismantleUIViewController(_ uiViewController: TCICViewController, coordinator: ()) {'
-    )
-
-    File.write(tcic_manager, patched) if patched != content
-  end
 end

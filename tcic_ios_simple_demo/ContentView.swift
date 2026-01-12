@@ -71,7 +71,7 @@ struct ContentView: View {
             allowPipMode: true
         );
         
-        let layoutConfig = TCICLayoutConfig(landscapeLayoutConfig: LandscapeLayoutConfig(memberListPosition: TLayoutPosition.top))
+        let layoutConfig = TCICLayoutConfig(landscapeLayoutConfig: LandscapeLayoutConfig(memberListPosition: TLayoutPosition.right))
     
         // let boardConfig = TCICBoardConfig(boardStreamConfig: BoardStreamConfig(boardStreamUrl: ""))
         
@@ -79,8 +79,9 @@ struct ContentView: View {
             token: params["token"] as! String,
             classId: params["classid"] as! String,
             userId: params["userid"] as! String,
-            role: 1, basicConfig: basicConfig,
-            layoutConfig: layoutConfig
+            role: 1
+            // basicConfig: basicConfig,
+            // layoutConfig: layoutConfig
             // boardConfig: boardConfig
         )
         

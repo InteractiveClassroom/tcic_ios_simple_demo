@@ -11,9 +11,9 @@ struct ClassroomSetupWizardView: View {
     @State private var classrooms: [RoomCreationResponse] = [] // 新增状态变量
     
     // 表单字段
-    @State private var secretKey = ""
-    @State private var secretId = ""
-    @State private var appId = ""
+    @State private var secretKey = UserDefaults.standard.string(forKey: "tcic_secretKey") ?? ""
+    @State private var secretId = UserDefaults.standard.string(forKey: "tcic_secretId") ?? ""
+    @State private var appId = UserDefaults.standard.string(forKey: "tcic_appId") ?? ""
     
     // 消息状态
     @State private var showingAlert = false
@@ -287,6 +287,14 @@ struct ClassroomSetupWizardView: View {
             secretKey: secretKey,
             appId: Int(appId) ?? 0
         )
+        // 保存配置到 UserDefaults
+        saveConfiguration()
+    }
+    
+    private func saveConfiguration() {
+        UserDefaults.standard.set(secretKey, forKey: "tcic_secretKey")
+        UserDefaults.standard.set(secretId, forKey: "tcic_secretId")
+        UserDefaults.standard.set(appId, forKey: "tcic_appId")
     }
     
     private func handleConfigurationSuccess(response: UserRegistrationResponse) {
@@ -335,9 +343,7 @@ struct ClassroomSetupWizardView: View {
         isProcessing = false
         classroomInfo = nil
         
-        secretKey = ""
-        secretId = ""
-        appId = ""
+        // 不清除保存的配置，只重置界面
         
         showSuccess("已重置到第一步")
     }

@@ -74,7 +74,7 @@ struct ClassroomSetupWizardView: View {
                 resetWizard()
             }
         } message: {
-            Text("这将清除所有配置信息并返回到第一步，确定要继续吗？")
+            Text("这将重置向导流程并返回到第一步，已保存的配置不会被清除")
         }
         .sheet(isPresented: $showingSafari) {
             if let url = URL(string: documentationURL) {
@@ -132,6 +132,19 @@ struct ClassroomSetupWizardView: View {
                 action: handleConfiguration
             )
             .disabled(isProcessing)
+            
+            // 添加清除缓存按钮
+            if !secretKey.isEmpty || !secretId.isEmpty || !appId.isEmpty {
+                Button(action: clearSavedConfiguration) {
+                    HStack {
+                        Image(systemName: "trash")
+                        Text("清除已保存的配置")
+                    }
+                    .foregroundColor(.red)
+                    .font(.subheadline)
+                }
+                .padding(.top, 8)
+            }
             
             DocumentationTipView {
                 showingSafari = true
@@ -295,6 +308,18 @@ struct ClassroomSetupWizardView: View {
         UserDefaults.standard.set(secretKey, forKey: "tcic_secretKey")
         UserDefaults.standard.set(secretId, forKey: "tcic_secretId")
         UserDefaults.standard.set(appId, forKey: "tcic_appId")
+    }
+    
+    private func clearSavedConfiguration() {
+        UserDefaults.standard.removeObject(forKey: "tcic_secretKey")
+        UserDefaults.standard.removeObject(forKey: "tcic_secretId")
+        UserDefaults.standard.removeObject(forKey: "tcic_appId")
+        
+        secretKey = ""
+        secretId = ""
+        appId = ""
+        
+        showSuccess("配置已清除")
     }
     
     private func handleConfigurationSuccess(response: UserRegistrationResponse) {

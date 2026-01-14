@@ -23,7 +23,6 @@
 		E0ED1E0B2E701067007F5A48 /* ClassroomSetupWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0A2E701067007F5A48 /* ClassroomSetupWizardView.swift */; };
 		E0ED1E0D2E70108D007F5A48 /* WizardUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0C2E70108D007F5A48 /* WizardUIComponents.swift */; };
 		E0ED1E0F2E7014C7007F5A48 /* TCICRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED1E0E2E7014C7007F5A48 /* TCICRequest.swift */; };
-		E0FF1E012E90000000F00001 /* LinkerStubs.c in Sources */ = {isa = PBXBuildFile; fileRef = E0FF1E002E90000000F00001 /* LinkerStubs.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		E0ED1E0A2E701067007F5A48 /* ClassroomSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomSetupWizardView.swift; sourceTree = "<group>"; };
 		E0ED1E0C2E70108D007F5A48 /* WizardUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUIComponents.swift; sourceTree = "<group>"; };
 		E0ED1E0E2E7014C7007F5A48 /* TCICRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCICRequest.swift; sourceTree = "<group>"; };
-		E0FF1E002E90000000F00001 /* LinkerStubs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkerStubs.c; sourceTree = "<group>"; };
 		E9CB9A37C9FBB652C3810D33 /* Pods_tcic_ios_simple_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tcic_ios_simple_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD0AE53B96304AE8B9C3C3 /* Pods-tcic_ios_simple_demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tcic_ios_simple_demo.debug.xcconfig"; path = "Target Support Files/Pods-tcic_ios_simple_demo/Pods-tcic_ios_simple_demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				E0D377C52E5F01A700F9DEA6 /* tcic-ios-simple-demo-Info.plist */,
-				E0FF1E002E90000000F00001 /* LinkerStubs.c */,
 				E0D3779B2E5EDD7000F9DEA6 /* tcic_ios_simple_demoApp.swift */,
 				E0D3779D2E5EDD7000F9DEA6 /* ContentView.swift */,
 				E0D3779F2E5EDD7100F9DEA6 /* Assets.xcassets */,
@@ -464,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0FF1E012E90000000F00001 /* LinkerStubs.c in Sources */,
 				E0ED1E0F2E7014C7007F5A48 /* TCICRequest.swift in Sources */,
 				E0D3779E2E5EDD7000F9DEA6 /* ContentView.swift in Sources */,
 				E0D3779C2E5EDD7000F9DEA6 /* tcic_ios_simple_demoApp.swift in Sources */,

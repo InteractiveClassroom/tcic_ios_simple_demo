@@ -20,8 +20,6 @@ class TCICUIEventHandler: UIEventCallback {
 struct ContentView: View {
     @State private var callback: TCICCallback = TCICCallback()
     @State private var uiEventHandler = TCICUIEventHandler()
-    @State private var isGotoRoomPageActive: Bool = false
-    @State private var roomPageParams: [String: Any] = [:]
     
     var body: some View {
         NavigationView {
@@ -31,28 +29,14 @@ struct ContentView: View {
                     handleGotoRoomPage(classroomInfo: classroomInfo)
                 }
                 
-                NavigationLink(
-                    destination: TPageWrapper(params: roomPageParams),
-                    isActive: $isGotoRoomPageActive,
-                    label: { EmptyView() }
-                )
-                .hidden()
-                .onChange(of: isGotoRoomPageActive) { newValue in
-                    if !newValue {
-                        TCICManager.shared.Tengine.viewController = nil
-                    }
-                }
+
                 .onAppear {
                     // 初始化 TCICManager
                     self.callback.afterExitedClassBlock = {
-                        print("dismiss page")
-                        isGotoRoomPageActive = false
-                        TCICManager.shared.Tengine.viewController = nil
+                        print("afterExitedClass called - page will auto close")
                     }
                     self.callback.onJoinedClassFailedBlock = {
                         print("joined class failed")
-                        isGotoRoomPageActive = false
-                        TCICManager.shared.Tengine.viewController = nil
                     }
                     self.callback.onClassStartedBlock = {
                         print("class started");
@@ -81,14 +65,13 @@ struct ContentView: View {
             "userid": classroomInfo.userId,
             "role": "teacher" // 默认设置为teacher，你可以根据需要修改
         ]
-        let role = params["role"] as! String
         
         let headerConfig = TCICHeaderComponentConfig();
-        headerConfig.showClassLogo = false;
+        headerConfig.showClassLogo = true;
         headerConfig.showNetworkStatus = false;
         headerConfig.showClassInfo = false;
-        headerConfig.showQuitButton = false;
-        headerConfig.showLeftQuitButton = true;
+        headerConfig.showQuitButton = true;
+        headerConfig.showLeftQuitButton = false;
         headerConfig.portraitHeaderLayout = 0;
         
         let mainViewBuilderJson = "{\n" +
@@ -134,10 +117,10 @@ struct ContentView: View {
         mainViewComponetConfig.builderJson = mainViewBuilderJson;
         
         let basicConfig = TCICBasicConfig(
-            autoStartClass: false, allowEarlyEnter: true,
+            autoStartClass: false, allowEarlyEnter: false,
             allowPipMode: true
         );
-        basicConfig.teacherVideoFloating = true;
+        basicConfig.teacherVideoFloating = false;
         
         let footerComponentConfig =  TCICFooterComponentConfig();
         let footerBuilderJson = "{\n" +
@@ -194,19 +177,11 @@ struct ContentView: View {
         
         TCICManager.shared.setConfig(config)
         
-        // 保存参数并触发跳转
-        self.roomPageParams = params
-        self.isGotoRoomPageActive = true
-    }
-}
-
-struct TPageWrapper: View {
-    let params: [String: Any]
-
-    var body: some View {
-        TCICManager.TPage()
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarHidden(true)
+        // 获取当前 UIViewController 来调用 openTCICPage
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = windowScene.windows.first?.rootViewController {
+            TCICManager.shared.openTCICPage(from: rootVC)
+        }
     }
 }
 

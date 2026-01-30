@@ -76,10 +76,12 @@ class TCICCloudAPI {
                     "StartTime": currentTimestamp + 10,
                     "EndTime": currentTimestamp + 30 * 60,
                     "SdkAppId": TCICRequest.appId,
+                    "RoomType": 1,
                     "Resolution": 1,
-                    "MaxMicNumber": 6,
-                    "SubType": "videoDoc",
-                    "TeacherId": teacherId
+                    "MaxMicNumber": 1,
+                    "SubType": "video",
+                    "TeacherId": teacherId,
+                    "VideoOrientation": 0
                 ]
         
         let response = try await TCICRequest.sendRequest(

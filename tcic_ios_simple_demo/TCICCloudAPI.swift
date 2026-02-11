@@ -79,7 +79,7 @@ class TCICCloudAPI {
                     "RoomType": 1,
                     "Resolution": 1,
                     "MaxMicNumber": 1,
-                    "SubType": "video",
+                    "SubType": "videodoc",
                     "TeacherId": teacherId,
                     "VideoOrientation": 0
                 ]

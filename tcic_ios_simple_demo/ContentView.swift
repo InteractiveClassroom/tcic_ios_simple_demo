@@ -70,8 +70,8 @@ struct ContentView: View {
         headerConfig.showClassLogo = true;
         headerConfig.showNetworkStatus = false;
         headerConfig.showClassInfo = false;
-        headerConfig.showQuitButton = true;
-        headerConfig.showLeftQuitButton = false;
+        headerConfig.showQuitButton = false;
+        headerConfig.showLeftQuitButton = true;
         headerConfig.portraitHeaderLayout = 0;
         
         let mainViewBuilderJson = """
@@ -175,13 +175,16 @@ struct ContentView: View {
 """;
         
         let mainViewComponetConfig = TCICMainViewComponentConfig();
-        mainViewComponetConfig.builderJson = mainViewBuilderJson;
+//        mainViewComponetConfig.builderJson = mainViewBuilderJson;
+        mainViewComponetConfig.mainViewBuilder = {
+                   return MainViewNativeViewCreator(messenger: TCICManager.shared.Tengine!.binaryMessenger)
+               }
         
         let basicConfig = TCICBasicConfig(
-            autoStartClass: false, allowEarlyEnter: false,
-            allowPipMode: true
+            autoStartClass: false, allowEarlyEnter: true,
+            allowPipMode: false
         );
-        basicConfig.teacherVideoFloating = false;
+        basicConfig.teacherVideoFloating = true;
         
         
         let membersComponentConfig = TCICMembersComponentConfig();

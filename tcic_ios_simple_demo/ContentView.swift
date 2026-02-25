@@ -194,7 +194,6 @@ struct ContentView: View {
             token: params["token"] as! String,
             classId: params["classid"] as! String,
             userId: params["userid"] as! String,
-            role: 1,
             headerComponentConfig: headerConfig, 
             basicConfig: basicConfig,
             membersComponentConfig: membersComponentConfig,  mainViewComponentConfig: mainViewComponetConfig
